@@ -68,14 +68,14 @@ export const MapProvider = ({ children }: Props) => {
     const resp = await directionsApi.get<DirectionsResponse>(
       `/${start.join(",")};${end.join(",")}`
     );
-    const { distance, duration, geometry } = resp.data.routes[0];
+    const { distance, geometry } = resp.data.routes[0];
     const { coordinates: coords } = geometry;
 
     let kms = distance / 1000;
     kms = Math.round(kms * 100);
     kms /= 100;
 
-    const minutes = Math.floor(duration / 60);
+    // const minutes = Math.floor(duration / 60);
     const bounds = new LngLatBounds(start, start);
 
     for (const coord of coords) {
