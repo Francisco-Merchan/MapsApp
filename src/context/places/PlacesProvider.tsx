@@ -48,6 +48,8 @@ export const PlacesProvider = ({ children }: Props) => {
     });
 
     dispatch({ type: "setPlaces", payload: resp.data.features });
+
+    return resp.data.features;
   };
 
   return (
